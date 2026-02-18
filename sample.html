@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Agency - Sticky Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a0f0a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    }
+.text-gradient-pink {
+    background: linear-gradient(to bottom right, #ff4d94, #7a1b41);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+    }
+.text-gradient-blue {
+    background: linear-gradient(to bottom right, #3b82f6, #1e3a8a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+    }
+.text-gradient-green {
+    background: linear-gradient(to bottom right, #10b981, #064e3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+    }
+.bg-grain {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDuR2siQ2dXThtouJWNiIflJxB3egEIwRN8EhKfggIyH4xFCaECy9UKoHxxO5Q77qSJVc4pN3dZsem8-GsrIx_3rbTGx5_4YJehq1ofMEX0ylyDL8JvhGZjZlZCprIAFhb0J1nelaqIJndCr0uF6ow7Y_0a2Q4fx5FggacfxyK4g31Z7CoIIEHgc8jwj43PcimZz8Ad_Ari3NXKd_8P3FzciQ-jQUF9COAy_xneVl-no_Mop2uFaLdZM8sLWRGqj7nTZBiKazjVL8A);
+    opacity: 0.05
+    }
+/* Sticky logic simulation via CSS */
+.card-stack-container {
+    padding-bottom: 20vh
+    }
+.sticky-card {
+    top: 10vh
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 overflow-x-hidden">
+<!-- Navbar -->
+<header class="fixed top-0 w-full z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/10 px-6 md:px-20 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined block">deployed_code</span>
+</div>
+<h2 class="text-xl font-extrabold tracking-tight uppercase">Nexus<span class="text-primary">.</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">WORK</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">SERVICES</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">ABOUT</a>
+<button class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold tracking-wide hover:brightness-110 transition-all">
+                    START PROJECT
+                </button>
+</nav>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="relative pt-32">
+<!-- Background Texture -->
+<div class="fixed inset-0 pointer-events-none bg-grain z-0"></div>
+<!-- Hero Section -->
+<section class="relative z-10 max-w-7xl mx-auto px-6 mb-24 text-center">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-primary/20">
+                Our Capabilities
+            </span>
+<h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1]">
+                Crafting the future of<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">digital experiences.</span>
+</h1>
+<p class="max-w-2xl mx-auto text-slate-400 text-lg">
+                We blend technical excellence with high-end design to build products that move industries forward.
+            </p>
+</section>
+<!-- Sticky Card Stack Section -->
+<section class="relative z-10 max-w-6xl mx-auto px-6 card-stack-container">
+<!-- Card 01 -->
+<div class="sticky sticky-card mb-32 z-[10]">
+<div class="glass-card rounded-xl p-8 md:p-12 overflow-hidden relative shadow-2xl">
+<!-- Large Number Background -->
+<span class="absolute -bottom-10 -left-10 text-[18rem] font-black text-white/5 leading-none select-none">01</span>
+<div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-12 h-[2px] bg-pink-500"></span>
+<span class="text-pink-500 font-bold tracking-widest text-xs uppercase">Branding &amp; Strategy</span>
+</div>
+<h3 class="text-4xl md:text-5xl font-bold">Digital Craftsmanship</h3>
+<p class="text-slate-400 leading-relaxed text-lg">
+                                We define visual languages that resonate. From identity design to holistic brand systems, we ensure your message is felt, not just seen.
+                            </p>
+<button class="flex items-center gap-2 group text-white font-bold hover:text-pink-500 transition-colors">
+                                EXPLORE STRATEGY 
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="aspect-video w-full rounded-lg overflow-hidden border border-white/10 shadow-inner group">
+<div class="w-full h-full bg-slate-800 relative">
+<div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-transparent"></div>
+<img class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-700" data-alt="Abstract vibrant pink 3D design shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ7sFJXpEuyuyVKSri5aJ-8-GvWg1O0fQBXHrDYDfxcieRMdY6chb3fUgXkfmrnVovoP9bm2FBntSvoif1ZpMel6t2IdWycu22iRiSZx7vBj33ctup4HAG4uwo6J1X2H3yj1xq34EVKU7pGLuNCI8aTDfb_Cz4PKN_G9sOsU2dRNyTKfIy14I7UmoBF5ufkbPLCWJ6f6iRNxL7yq_Xq8-a3P_eK-h2XwKMIMDdmbilpE4TtrbEMDebbne82y-Rl0NrjGZHhibkKqA"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="sticky sticky-card mb-32 z-[20]" style="top: 12vh;">
+<div class="glass-card rounded-xl p-8 md:p-12 overflow-hidden relative shadow-2xl">
+<!-- Large Number Background -->
+<span class="absolute -bottom-10 -left-10 text-[18rem] font-black text-white/5 leading-none select-none">02</span>
+<div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-12 h-[2px] bg-blue-500"></span>
+<span class="text-blue-500 font-bold tracking-widest text-xs uppercase">Engineering</span>
+</div>
+<h3 class="text-4xl md:text-5xl font-bold">Scalable Infrastructure</h3>
+<p class="text-slate-400 leading-relaxed text-lg">
+                                Building for the long term with modern stacks. Our development focuses on speed, security, and the flexibility to scale as you grow.
+                            </p>
+<button class="flex items-center gap-2 group text-white font-bold hover:text-blue-500 transition-colors">
+                                VIEW THE STACK 
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="aspect-video w-full rounded-lg overflow-hidden border border-white/10 shadow-inner group">
+<div class="w-full h-full bg-slate-800 relative">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent"></div>
+<img class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-700" data-alt="Futuristic glowing blue server technology grid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6J77ROk961NPJ13Xpt9jDBg2w4We4yAwYTPhIuKPqdh8LKMNmTYuUZtuRWF40LCNUPJTUfMx4vCbB1mMF1vwd77DOeg--8BPfhKbBMn8_Cb5qUIRONHW8ZNXclVZMS46sMnmCyqW9gxfhKabPLIX_KnVKa-PAqHCNgAxcoyme7W89HCRwBKZiS0htsBbV9tiAj9YH4JWyLy9iajelFJj9nYBgsoJ8gv7DfpIl7yis7qH-285pUQJd5LczNP7Tut4hbINCM3pzNT4"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 03 -->
+<div class="sticky sticky-card mb-32 z-[30]" style="top: 14vh;">
+<div class="glass-card rounded-xl p-8 md:p-12 overflow-hidden relative shadow-2xl">
+<!-- Large Number Background -->
+<span class="absolute -bottom-10 -left-10 text-[18rem] font-black text-white/5 leading-none select-none">03</span>
+<div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-12 h-[2px] bg-emerald-500"></span>
+<span class="text-emerald-500 font-bold tracking-widest text-xs uppercase">Performance Marketing</span>
+</div>
+<h3 class="text-4xl md:text-5xl font-bold">Data-Driven Growth</h3>
+<p class="text-slate-400 leading-relaxed text-lg">
+                                We turn insights into impact. Using deep analytics and strategic positioning, we help brands reach their target audience and convert effectively.
+                            </p>
+<button class="flex items-center gap-2 group text-white font-bold hover:text-emerald-500 transition-colors">
+                                SCALE YOUR BRAND 
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="aspect-video w-full rounded-lg overflow-hidden border border-white/10 shadow-inner group">
+<div class="w-full h-full bg-slate-800 relative">
+<div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent"></div>
+<img class="w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-700" data-alt="Dynamic green data visualization dashboard graphs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpdwpeirGB70wQLQ9jiQpzENIHZrqT-J8wKkU9D-X58oyn4b3WmIv8_zQbr9k-FUQYP9b1QwnQKyjpdyMQJZVlxikjylyE4_r76toqzwrXNAT0FmfMfS-PoeSIOl5Ez1QGDLEBj6Cn6uzWTDNMhKOhJGKEAi0-BJq6JicY-5G6C2UbZIfkaaUTZgbnOx9YabiUrLoQlDJ9x4EAXm2_vCDS1oMDApRzg1XKUCsNGcXU9t8kj07-UcDnkosko-HoYDK1OJKz7fuz0aU"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="relative z-10 py-32 bg-background-dark">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-4xl md:text-6xl font-black mb-12">Ready to evolve?</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<button class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white px-10 py-5 rounded-lg font-bold text-lg shadow-xl shadow-primary/20 transition-all">
+                        Schedule a Consultation
+                    </button>
+<button class="w-full md:w-auto border border-white/20 hover:bg-white/5 text-white px-10 py-5 rounded-lg font-bold text-lg transition-all">
+                        View Portfolio
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Vertical Progress Indicator (UI Decorative) -->
+<div class="fixed right-8 top-1/2 -translate-y-1/2 flex-col gap-4 hidden lg:flex z-50">
+<div class="w-1.5 h-1.5 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+</div>
+<!-- Footer -->
+<footer class="bg-background-dark border-t border-white/5 py-12">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="p-1.5 bg-primary/20 rounded text-primary">
+<span class="material-symbols-outlined text-sm">deployed_code</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight uppercase">Nexus<span class="text-primary">.</span></h2>
+</div>
+<p class="text-slate-500 text-sm">
+                © 2024 Nexus Digital Agency. All rights reserved.
+            </p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+</footer>
+</body></html>

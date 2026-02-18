@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truscholar — AI Career Discovery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline id="bgVideo" class="video-bg">
+        <source src="animated_video2.mp4" type="video/mp4">
+    </video>
+    <div class="grain"></div>
+
+    <!-- Magnetic Cursor Label -->
+    <div class="mag-cursor" id="magCursor"><span id="magCursorText">View</span></div>
+
+    <!-- Job Detail Modal -->
+    <div class="modal-wrap" id="jobModal">
+        <div class="modal-dim" onclick="closeJobModal()"></div>
+        <div class="modal-panel">
+            <button class="modal-x" onclick="closeJobModal()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="15" y1="5" x2="5" y2="15"/><line x1="5" y1="5" x2="15" y2="15"/></svg></button>
+            <div class="modal-scroll" id="jobModalContent"></div>
+        </div>
+    </div>
+
+    <div class="shell">
+
+        <!-- Nav -->
+        <nav class="topbar">
+            <div class="topbar__in">
+                <a href="#" class="logo" onclick="event.preventDefault()">
+                    <svg class="logo__icon" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M15 2L2 9L15 16L28 9L15 2Z" fill="url(#lg1)" opacity=".9"/>
+                        <path d="M2 9V21L15 28V16L2 9Z" fill="url(#lg2)" opacity=".65"/>
+                        <path d="M28 9V21L15 28V16L28 9Z" fill="url(#lg3)" opacity=".45"/>
+                        <defs>
+                            <linearGradient id="lg1" x1="2" y1="2" x2="28" y2="16"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#a855f7"/></linearGradient>
+                            <linearGradient id="lg2" x1="2" y1="9" x2="15" y2="28"><stop stop-color="#00f0ff"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
+                            <linearGradient id="lg3" x1="28" y1="9" x2="15" y2="28"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#c084fc"/></linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Truscholar</span>
+                </a>
+                <div class="pillnav" id="pillNav">
+                    <div class="pillnav__bg" id="pillBg"></div>
+                    <button class="pillnav__btn active" data-tab="home" onclick="pillClick(this)">Home</button>
+                    <button class="pillnav__btn" data-tab="profile" onclick="pillClick(this)">Profile</button>
+                    <button class="pillnav__btn" data-tab="test" onclick="pillClick(this)">Assessment</button>
+                    <button class="pillnav__btn" data-tab="results" onclick="pillClick(this)">Results</button>
+                </div>
+                <div class="topbar__r">
+                    <div id="userInfo" class="uinfo hidden">
+                        <div class="uinfo__ring"><div class="uinfo__av" id="userAvatar">G</div></div>
+                        <span id="userName" class="uinfo__name"></span>
+                        <button onclick="logout()" class="btn btn--ghost btn--xs">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Stepper -->
+        <div id="progressBar" class="stepper hidden">
+            <div class="stepper__in">
+                <div class="stepper__track"><div class="stepper__fill" id="stepperFill"></div></div>
+                <div class="stepper__dots">
+                    <div class="sdot" id="step1"><div class="sdot__c">1</div><span>Profile</span></div>
+                    <div class="sdot" id="step2"><div class="sdot__c">2</div><span>Interests</span></div>
+                    <div class="sdot" id="step3"><div class="sdot__c">3</div><span>RIASEC</span></div>
+                    <div class="sdot" id="step4"><div class="sdot__c">4</div><span>Results</span></div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main">
+
+            <!-- WELCOME -->
+            <section id="welcomeScreen" class="scr active">
+                <div class="hero">
+                    <div class="hero__pill anim-up" style="--d:0s"><span class="blink"></span>AI-Powered Career Intelligence</div>
+                    <h1 class="hero__h1 anim-up" style="--d:.1s">Discover the career<br><span class="grad-text">you were made for.</span></h1>
+                    <p class="hero__p anim-up" style="--d:.22s">Our scientifically-validated RIASEC assessment maps your personality<br class="hide-m"> to your ideal career path with AI precision.</p>
+                    <div class="hero__btns anim-up" style="--d:.32s">
+                        <button onclick="showRegistration()" class="btn btn--glow btn--lg"><span>Get Started</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9H14.25M14.25 9L9.75 4.5M14.25 9L9.75 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+                        <button class="btn btn--glass btn--lg" onclick="showRegistration()">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- ═══ PREMIUM STACKED CARDS ═══ -->
+                <div class="deck anim-up" style="--d:.45s">
+                    <div class="deck-card deck-card--cyan" data-cursor-label="Explore">
+                        <div class="deck-card__num">01.</div>
+                        <h2 class="deck-card__title">Understand</h2>
+                        <p class="deck-card__desc">Take our scientifically-validated RIASEC personality assessment. 60 carefully crafted questions map your interests, aptitudes, and work style preferences.</p>
+                        <div class="deck-card__tags"><span>Personality</span><span>Interests</span><span>Aptitude</span></div>
+                    </div>
+                    <div class="deck-card deck-card--magenta" data-cursor-label="Explore">
+                        <div class="deck-card__num">02.</div>
+                        <h2 class="deck-card__title">Match</h2>
+                        <p class="deck-card__desc">Our AI engine processes your unique profile against 16,000+ career records. Every recommendation is personalized — no generic suggestions.</p>
+                        <div class="deck-card__tags"><span>AI Matching</span><span>16K+ Careers</span><span>Personalized</span></div>
+                    </div>
+                    <div class="deck-card deck-card--green" data-cursor-label="Explore">
+                        <div class="deck-card__num">03.</div>
+                        <h2 class="deck-card__title">Navigate</h2>
+                        <p class="deck-card__desc">Get step-by-step education pathways, skill roadmaps, and salary insights. Chat with an AI advisor for ongoing career guidance anytime.</p>
+                        <div class="deck-card__tags"><span>Pathways</span><span>Roadmaps</span><span>AI Advisor</span></div>
+                    </div>
+                    <div class="deck-card deck-card--purple" data-cursor-label="Explore">
+                        <div class="deck-card__num">04.</div>
+                        <h2 class="deck-card__title">Achieve</h2>
+                        <p class="deck-card__desc">Track your progress, explore alternative paths, and unlock new opportunities as you grow. Your career journey evolves with you.</p>
+                        <div class="deck-card__tags"><span>Growth</span><span>Tracking</span><span>Evolving</span></div>
+                    </div>
+                </div>
+                <div style="height:20vh"></div>
+            </section>
+
+            <!-- REGISTRATION -->
+            <section id="registrationScreen" class="scr">
+                <div class="fpanel glass" style="max-width:460px">
+                    <h2 class="fpanel__h">Create Account</h2>
+                    <p class="fpanel__sub">Begin your AI-powered career journey</p>
+                    <form id="registrationForm" onsubmit="handleRegistration(event)">
+                        <div class="fld"><label>Full Name</label><div class="fld__box"><input type="text" id="name" placeholder="Your full name" required></div></div>
+                        <div class="fld"><label>Email</label><div class="fld__box"><input type="email" id="email" placeholder="you@example.com" required></div></div>
+                        <button type="submit" class="btn btn--glow btn--block">Continue →</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- PROFILE -->
+            <section id="profileScreen" class="scr">
+                <div class="fpanel glass" style="max-width:580px">
+                    <h2 class="fpanel__h">Complete Profile</h2>
+                    <p class="fpanel__sub">For personalized results</p>
+                    <form id="profileForm" onsubmit="handleProfileComplete(event)">
+                        <div class="fld"><label>Career Stage</label><div class="fld__box"><select id="careerStage" required><option value="">Select…</option><option value="k10">Class 10 or below</option><option value="k12">Class 11 or 12</option><option value="graduate">Graduate / College</option><option value="WORKING_PROFESSIONAL">Working Professional</option><option value="CAREER_SWITCH">Career Switcher</option></select></div></div>
+                        <div class="fld" id="educationGroup" style="display:none"><label>Current Grade</label><div class="fld__box"><input type="text" id="education" placeholder="e.g., 8th, 10th, 12th"></div></div>
+                        <div id="nonStudentFields" style="display:none">
+                            <div class="fld-row"><div class="fld"><label>Education Level</label><div class="fld__box"><input type="text" id="educationLevel" placeholder="e.g., Bachelor's"></div></div><div class="fld"><label>Field of Study / Work</label><div class="fld__box"><input type="text" id="currentField" placeholder="e.g., Computer Science"></div></div></div>
+                            <div class="fld"><label>Experience (years)</label><div class="fld__box"><input type="number" id="experienceYears" value="0" min="0" max="50"></div></div>
+                        </div>
+                        <button type="submit" class="btn btn--glow btn--block">Continue →</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- INTERESTS -->
+            <section id="interestsScreen" class="scr">
+                <div class="wpanel glass">
+                    <div style="text-align:center;margin-bottom:32px"><h2 class="fpanel__h">Pick Your Top 3 Interests</h2><p class="fpanel__sub">Select areas that excite you</p><div class="cnt-pill"><span id="selectedCount">0</span> / 3</div></div>
+                    <div id="interestsGrid" class="igrid"></div>
+                    <div style="text-align:center;margin-top:36px"><button onclick="submitInterests()" id="submitInterestsBtn" class="btn btn--glow btn--lg" disabled>Start RIASEC Test →</button></div>
+                </div>
+            </section>
+
+            <!-- RIASEC TEST -->
+            <section id="riasecTestScreen" class="scr">
+                <div class="wpanel glass" style="max-width:720px">
+                    <div class="thead"><h2 class="fpanel__h" style="margin:0">RIASEC Assessment</h2><div class="tcnt"><span id="currentQuestion">1</span><span class="dim">/</span><span id="totalQuestions">60</span></div></div>
+                    <div class="tbar"><div class="tbar__f" id="testProgressFill"></div></div>
+                    <div id="questionContainer" class="qzone"></div>
+                    <div class="tactions"><button onclick="previousQuestion()" id="prevBtn" class="btn btn--glass" disabled>← Previous</button><button onclick="nextQuestion()" id="nextBtn" class="btn btn--glow">Next →</button><button onclick="submitTest()" id="submitBtn" class="btn btn--glow" style="display:none">Submit ✓</button></div>
+                </div>
+            </section>
+
+            <!-- TIE BREAKER -->
+            <section id="tieBreakerScreen" class="scr">
+                <div class="wpanel glass" style="max-width:720px">
+                    <div class="thead"><h2 class="fpanel__h" style="margin:0">Tie-Breaker</h2><div class="badge-glow">Round <span id="tieRound">1</span></div></div>
+                    <p style="text-align:center;color:var(--t2);margin-bottom:24px">Answer to refine your results</p>
+                    <div id="tieBreakerQuestion" class="qzone"></div>
+                    <div style="text-align:center;margin-top:28px"><button onclick="submitTieBreaker()" class="btn btn--glow btn--lg">Submit Answer</button></div>
+                </div>
+            </section>
+
+            <!-- RECOMMENDATIONS -->
+            <section id="recommendationsScreen" class="scr">
+                <div class="wpanel glass">
+                    <div class="rtop"><h2 class="fpanel__h">Your Career Recommendations</h2><div id="riasecResult" class="rpill"></div></div>
+                    <div id="loadingRecommendations" class="lzone"><div class="lorb"><div class="lorb__r"></div></div><p>Generating recommendations…</p></div>
+                    <div id="recommendationsContent" class="recs hidden"></div>
+                </div>
+            </section>
+
+            <!-- EDUCATION PATHWAY -->
+            <section id="educationPathwayScreen" class="scr">
+                <div class="wpanel glass">
+                    <button onclick="backToRecommendations()" class="btn btn--glass btn--xs" style="margin-bottom:20px">← Back</button>
+                    <div id="loadingPathway" class="lzone"><div class="lorb"><div class="lorb__r"></div></div><p>Generating pathway…</p></div>
+                    <div id="pathwayContent" class="pw hidden"></div>
+                    <button onclick="openChatbot()" id="chatbotBtn" class="btn btn--accent btn--block" style="margin-top:32px">💬 Chat with AI Advisor</button>
+                </div>
+            </section>
+
+            <!-- CHATBOT -->
+            <section id="chatbotScreen" class="scr">
+                <div class="chatbox glass">
+                    <div class="chatbox__hd"><div><h2 style="font-size:1.1rem;margin:0;font-weight:600">AI Career Advisor</h2><span style="font-size:.76rem;color:var(--t2)">Powered by Truscholar</span></div><button onclick="closeChatbot()" class="btn btn--glass btn--xs">✕</button></div>
+                    <div id="chatMessages" class="chatbox__body"></div>
+                    <form id="chatForm" onsubmit="sendChatMessage(event)" class="chatbox__ft"><input type="text" id="chatInput" placeholder="Ask anything…" required><button type="submit" class="btn btn--glow btn--sm"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8L14 2L8 14L7 9L2 8Z" fill="currentColor"/></svg></button></form>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="loadingOverlay" class="overlay hidden"><div class="lorb lorb--big"><div class="lorb__r"></div></div></div>
+    <script src="script.js"></script>
+</body>
+</html>
