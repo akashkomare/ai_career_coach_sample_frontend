@@ -1,7 +1,3 @@
-// ╔══════════════════════════════════════════════════════╗
-// ║  TRUSCHOLAR — Premium Stacked Cards · Magnetic Cursor ║
-// ╚══════════════════════════════════════════════════════╝
-
 // const API_BASE_URL = 'http://localhost:8080/api';
 const API_BASE_URL = 'https://aicareercoach-test-308900003771.asia-southeast1.run.app/api';
 
@@ -39,7 +35,8 @@ const API_BASE_URL = 'https://aicareercoach-test-308900003771.asia-southeast1.ru
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
   function tick(){const sp=vis?.055:.1;lx+=(mx-lx)*sp;ly+=(my-ly)*sp;el.style.left=lx+'px';el.style.top=ly+'px';requestAnimationFrame(tick)}tick();
   const map=[{s:'.deck-card',t:'Explore'},{s:'.jtile',t:'View\nRecommendation'},{s:'.icard',t:'Select'}];
-  document.addEventListener('mouseover',e=>{for(const{s,t}of map){const m=e.target.closest(s);if(m){txt.textContent=m.getAttribute('data-cursor-label')||t;el.classList.add('on');vis=true;return}}});
+  function isClickable(elem){if(!elem)return false;const style=window.getComputedStyle(elem);if(style.cursor==='default'&&!elem.onclick)return false;return elem.onclick||elem.href||elem.tagName==='BUTTON'||elem.getAttribute('data-cursor-label')||style.cursor==='pointer'}
+  document.addEventListener('mouseover',e=>{for(const{s,t}of map){const m=e.target.closest(s);if(m&&isClickable(m)){txt.textContent=m.getAttribute('data-cursor-label')||t;el.classList.add('on');vis=true;return}}});
   document.addEventListener('mouseout',e=>{for(const{s}of map)if(e.target.closest(s)){el.classList.remove('on');vis=false;return}});
 })();
 
